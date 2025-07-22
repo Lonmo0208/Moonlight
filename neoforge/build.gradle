@@ -38,6 +38,12 @@ shadowJar {
     archiveClassifier = "dev-shadow"
 }
 
+repositories {
+    flatDir(
+            dirs: 'libs'
+    )
+}
+
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
@@ -100,7 +106,7 @@ publishing {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    neoForge "net.neoforged:neoforge:${neo_version}"
+    neoForge "net.neoforged:neoforge:21.1.194-1.21.1-UpFix"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
